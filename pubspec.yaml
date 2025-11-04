@@ -1,0 +1,32 @@
+name: controle_financeiro
+description: "A Flutter app para controle de recebimentos e clientes fiado."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI / internacionalização
+  cupertino_icons: ^1.0.8
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+
+  # Banco local
+  sqflite: ^2.3.0
+  path: ^1.9.1
+
+  # Para testar/inspecionar o DB local no desktop
+  sqflite_common_ffi: ^2.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

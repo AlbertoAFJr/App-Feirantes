@@ -1,0 +1,103 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      Vers├úo do MSBuild 17.14.23+b0019275e para .NET Framework
+      Compila├º├úo de 04/11/2025 15:22:29 iniciada.
+      
+      Projeto "C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj" no n├│ 1 (destinos padr├úo).
+      PrepareForBuild:
+        Criando o diret├│rio "Debug\\".
+        A sa├¡da estruturada est├í habilitada. A formata├º├úo do diagn├│stico do compilador refletir├í a hierarquia de erros. Consulte https://aka.ms/cpp/structured-output para obter mais detalhes.
+        Criando o diret├│rio "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Criando "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" porque "AlwaysCreate" foi especificado.
+        Tocando "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+      LINK : fatal error LNK1104: n├úo ├® poss├¡vel abrir o arquivo 'ucrtd.lib' [C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      Projeto de compila├º├úo pronto "C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (destinos padr├úo) -- FALHA.
+      
+      FALHA da compila├º├úo.
+      
+      "C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (destino padr├úo) (1) ->
+      (Link destino) -> 
+        LINK : fatal error LNK1104: n├úo ├® poss├¡vel abrir o arquivo 'ucrtd.lib' [C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      
+          0 Aviso(s)
+          1 Erro(s)
+      
+      Tempo Decorrido 00:00:00.38
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      Vers├úo do MSBuild 17.14.23+b0019275e para .NET Framework
+      Compila├º├úo de 04/11/2025 15:22:29 iniciada.
+      
+      Projeto "C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj" no n├│ 1 (destinos padr├úo).
+      PrepareForBuild:
+        Criando o diret├│rio "Debug\\".
+        A sa├¡da estruturada est├í habilitada. A formata├º├úo do diagn├│stico do compilador refletir├í a hierarquia de erros. Consulte https://aka.ms/cpp/structured-output para obter mais detalhes.
+        Criando o diret├│rio "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Criando "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" porque "AlwaysCreate" foi especificado.
+        Tocando "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+      LINK : fatal error LNK1104: n├úo ├® poss├¡vel abrir o arquivo 'ucrtd.lib' [C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      Projeto de compila├º├úo pronto "C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (destinos padr├úo) -- FALHA.
+      
+      FALHA da compila├º├úo.
+      
+      "C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (destino padr├úo) (1) ->
+      (Link destino) -> 
+        LINK : fatal error LNK1104: n├úo ├® poss├¡vel abrir o arquivo 'ucrtd.lib' [C:\\Users\\Alberto\\Desktop\\controle_financeiro\\windows\\build\\CMakeFiles\\3.27.9\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      
+          0 Aviso(s)
+          1 Erro(s)
+      
+      Tempo Decorrido 00:00:00.39
+      
+      
+...

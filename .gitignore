@@ -1,0 +1,23 @@
+# Flutter/Dart
+.dart_tool/
+.build/
+.packages
+.pub-cache/
+.pub/
+.idea/
+.vscode/
+*.iml
+*.log
+
+# Files for Windows/macOS/Linux
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+
+# SQLite database (opcional)
+*.db
+
+# Flutter generated
+flutter_export_environment.sh
