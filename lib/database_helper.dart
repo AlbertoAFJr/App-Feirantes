@@ -8,34 +8,25 @@ class DatabaseHelper {
 
   static Database? _database;
 
-  // Acesso ao banco
   Future<Database> get database async {
     if (_database != null) return _database!;
     _database = await _initDatabase();
     return _database!;
   }
 
-  // Inicializa e cria banco se não existir
   Future<Database> _initDatabase() async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, 'controle_financeiro.db');
 
-    print('📦 Caminho do banco: $path');
-
     return await openDatabase(
       path,
-      version: 1,
+      version: 2, // versão atualizada
       onCreate: _onCreate,
-      onOpen: (db) async {
-        print('📂 Banco aberto com sucesso!');
-      },
+      onUpgrade: _onUpgrade,
     );
   }
 
-  // Cria tabelas
   Future<void> _onCreate(Database db, int version) async {
-    print('🚀 Criando tabelas...');
-
     await db.execute('''
       CREATE TABLE entradas(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -51,11 +42,16 @@ class DatabaseHelper {
         nome TEXT,
         celular TEXT,
         valor REAL,
-        data TEXT
+        data TEXT,
+        status TEXT DEFAULT 'pendente'
       )
     ''');
+  }
 
-    print('✅ Tabelas criadas com sucesso!');
+  Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    if (oldVersion < 2) {
+      await db.execute("ALTER TABLE fiado ADD COLUMN status TEXT DEFAULT 'pendente'");
+    }
   }
 
   // ======================
@@ -71,6 +67,11 @@ class DatabaseHelper {
     return await db.query('entradas', orderBy: 'data DESC');
   }
 
+  Future<int> deleteEntrada(int id) async {
+    final db = await database;
+    return await db.delete('entradas', where: 'id = ?', whereArgs: [id]);
+  }
+
   // ======================
   // 💳 Fiado
   // ======================
@@ -84,20 +85,35 @@ class DatabaseHelper {
     return await db.query('fiado', orderBy: 'data DESC');
   }
 
+  Future<int> updateFiadoStatus(int id, String novoStatus) async {
+    final db = await database;
+    return await db.update('fiado', {'status': novoStatus},
+        where: 'id = ?', whereArgs: [id]);
+  }
+
   Future<int> deleteFiado(int id) async {
     final db = await database;
     return await db.delete('fiado', where: 'id = ?', whereArgs: [id]);
   }
 
   // ======================
-  // 🧹 Reset (apagar tudo)
+  // 📈 Relatórios
   // ======================
-  Future<void> resetDatabase() async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, 'controle_financeiro.db');
-    await deleteDatabase(path);
-    _database = null;
-    print('🧹 Banco de dados apagado e resetado.');
+  Future<double> getTotalEntradas(DateTime inicio, DateTime fim) async {
+    final db = await database;
+    final res = await db.rawQuery('''
+      SELECT SUM(dinheiro + pix) as total
+      FROM entradas
+      WHERE date(data) BETWEEN ? AND ?
+    ''', [inicio.toIso8601String(), fim.toIso8601String()]);
+    return (res.first['total'] as num?)?.toDouble() ?? 0.0;
+  }
+
+  Future<double> getTotalFiado(String status) async {
+    final db = await database;
+    final res = await db.rawQuery('''
+      SELECT SUM(valor) as total FROM fiado WHERE status = ?
+    ''', [status]);
+    return (res.first['total'] as num?)?.toDouble() ?? 0.0;
   }
 }
-

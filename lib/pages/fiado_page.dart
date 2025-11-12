@@ -5,6 +5,7 @@ import '../database_helper.dart';
 
 class FiadoPage extends StatefulWidget {
   const FiadoPage({super.key});
+
   @override
   State<FiadoPage> createState() => _FiadoPageState();
 }
@@ -73,15 +74,99 @@ class _FiadoPageState extends State<FiadoPage> {
     };
 
     await _db.insertFiado(row);
-    _nomeCtrl.clear();
-    _celCtrl.clear();
-    _valorCtrl.clear();
+    _limparCampos();
     await _carregarFiado();
   }
 
-  Future<void> _removerCliente(int id) async {
-    await _db.deleteFiado(id);
-    await _carregarFiado();
+  void _limparCampos() {
+    _nomeCtrl.clear();
+    _celCtrl.clear();
+    _valorCtrl.clear();
+    setState(() => _dataCompra = DateTime.now());
+  }
+
+  // Nova função de confirmar pagamento com escolha entre Dinheiro ou PIX
+  Future<void> _confirmarPagamento(int id, String nome, double valor) async {
+    final formaPagamento = await showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Confirmar pagamento recebido'),
+        content: Text(
+            'Deseja confirmar que o cliente "$nome" pagou o valor de R\$ ${valor.toStringAsFixed(2)}? Escolha a forma de pagamento:'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, 'dinheiro'),
+            child: const Text('Dinheiro'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, 'pix'),
+            child: const Text('PIX'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, null),
+            child: const Text('Cancelar'),
+          ),
+        ],
+      ),
+    );
+
+    if (formaPagamento != null) {
+      double dinheiro = 0.0;
+      double pix = 0.0;
+
+      if (formaPagamento == 'dinheiro') {
+        dinheiro = valor;
+      } else if (formaPagamento == 'pix') {
+        pix = valor;
+      }
+
+      // Adiciona entrada na tabela Entradas
+      final entrada = {
+        'dinheiro': dinheiro,
+        'pix': pix,
+        'data': DateTime.now().toIso8601String(),
+      };
+      await _db.insertEntrada(entrada);
+
+      // Remove registro do fiado
+      await _db.deleteFiado(id);
+      await _carregarFiado();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Pagamento confirmado para $nome como $formaPagamento.')),
+      );
+    }
+  }
+
+  // Função de excluir permanece inalterada
+  Future<void> _excluirRegistro(int id, String nome) async {
+    final confirmar = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Excluir registro'),
+        content: Text('Deseja realmente excluir o registro de "$nome"?'),
+        actions: [
+          TextButton.icon(
+            onPressed: () => Navigator.pop(ctx, false),
+            icon: const Icon(Icons.cancel, color: Colors.grey),
+            label: const Text('Não'),
+          ),
+          TextButton.icon(
+            onPressed: () => Navigator.pop(ctx, true),
+            icon: const Icon(Icons.delete, color: Colors.red),
+            label: const Text('Sim, excluir'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmar == true) {
+      await _db.deleteFiado(id);
+      await _carregarFiado();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Registro de $nome excluído com sucesso.')),
+      );
+    }
   }
 
   @override
@@ -116,18 +201,27 @@ class _FiadoPageState extends State<FiadoPage> {
               Text('Data: ${_fmtDate(_dataCompra)}'),
               const Spacer(),
               ElevatedButton.icon(
-                  onPressed: _selecionarData,
-                  icon: const Icon(Icons.calendar_today),
-                  label: const Text('Selecionar')),
+                onPressed: _selecionarData,
+                icon: const Icon(Icons.calendar_today),
+                label: const Text('Selecionar'),
+              ),
             ],
           ),
           const SizedBox(height: 12),
-          ElevatedButton(onPressed: _salvarCliente, child: const Text('Salvar Cliente')),
+          ElevatedButton.icon(
+            onPressed: _salvarCliente,
+            icon: const Icon(Icons.save),
+            label: const Text('Salvar Cliente'),
+          ),
           const SizedBox(height: 16),
           const Divider(),
           const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Clientes Cadastrados', style: TextStyle(fontWeight: FontWeight.bold))),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Clientes Cadastrados',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
           const SizedBox(height: 8),
           Expanded(
             child: _clientes.isEmpty
@@ -143,9 +237,27 @@ class _FiadoPageState extends State<FiadoPage> {
                           title: Text('${c['nome']} - R\$ ${(c['valor'] as double).toStringAsFixed(2)}'),
                           subtitle: Text('Data: ${_fmtDate(c['data'] as DateTime)}\nCelular: ${c['celular']}'),
                           isThreeLine: true,
-                          trailing: IconButton(
-                            icon: const Icon(Icons.check, color: Colors.green),
-                            onPressed: () => _removerCliente(c['id'] as int),
+                          trailing: Wrap(
+                            spacing: 8,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.delete, color: Colors.red),
+                                tooltip: 'Excluir registro',
+                                onPressed: () => _excluirRegistro(
+                                  c['id'] as int,
+                                  c['nome'] as String,
+                                ),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.check_circle, color: Colors.green),
+                                tooltip: 'Confirmar pagamento',
+                                onPressed: () => _confirmarPagamento(
+                                  c['id'] as int,
+                                  c['nome'] as String,
+                                  c['valor'] as double,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       );

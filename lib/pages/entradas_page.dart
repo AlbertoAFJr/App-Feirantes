@@ -5,6 +5,7 @@ import '../database_helper.dart';
 
 class EntradasPage extends StatefulWidget {
   const EntradasPage({super.key});
+
   @override
   State<EntradasPage> createState() => _EntradasPageState();
 }
@@ -55,12 +56,13 @@ class _EntradasPageState extends State<EntradasPage> {
   }
 
   Future<void> _salvarEntrada() async {
-    final dinheiro = double.tryParse(_dinheiroCtrl.text.replaceAll(',', '.')) ?? 0.0;
+    final dinheiro =
+        double.tryParse(_dinheiroCtrl.text.replaceAll(',', '.')) ?? 0.0;
     final pix = double.tryParse(_pixCtrl.text.replaceAll(',', '.')) ?? 0.0;
 
     if (dinheiro <= 0 && pix <= 0) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Informe pelo menos um valor maior que 0')));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Informe pelo menos um valor maior que 0')));
       return;
     }
 
@@ -76,6 +78,29 @@ class _EntradasPageState extends State<EntradasPage> {
     await _carregarEntradas();
   }
 
+  Future<void> _removerEntrada(int id) async {
+    final confirmar = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Confirmar exclusão'),
+        content: const Text('Tem certeza que deseja apagar esta entrada?'),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Cancelar')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, true),
+              child: const Text('Apagar')),
+        ],
+      ),
+    );
+
+    if (confirmar == true) {
+      await _db.deleteEntrada(id);
+      await _carregarEntradas();
+    }
+  }
+
   @override
   void dispose() {
     _dinheiroCtrl.dispose();
@@ -89,47 +114,70 @@ class _EntradasPageState extends State<EntradasPage> {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
+          // Campo de valor em dinheiro
           TextField(
             controller: _dinheiroCtrl,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
             inputFormatters: [
               FilteringTextInputFormatter.allow(RegExp(r'^\d+[\.,]?\d{0,2}'))
             ],
-            decoration: const InputDecoration(labelText: 'Valor em Dinheiro (ex: 15.45)'),
+            decoration:
+                const InputDecoration(labelText: 'Valor em Dinheiro (ex: 15.45)'),
           ),
           const SizedBox(height: 8),
+
+          // Campo de valor em PIX
           TextField(
             controller: _pixCtrl,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
             inputFormatters: [
               FilteringTextInputFormatter.allow(RegExp(r'^\d+[\.,]?\d{0,2}'))
             ],
-            decoration: const InputDecoration(labelText: 'Valor em PIX (ex: 10.00)'),
+            decoration:
+                const InputDecoration(labelText: 'Valor em PIX (ex: 10.00)'),
           ),
           const SizedBox(height: 8),
+
+          // Selecionar data
           Row(
             children: [
-              Text('Data: ${_fmtDate(_dataSelecionada)}'),
-              const Spacer(),
+              Expanded(
+                child: Text(
+                  'Data: ${_fmtDate(_dataSelecionada)}',
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
               ElevatedButton.icon(
-                  onPressed: _selecionarData,
-                  icon: const Icon(Icons.calendar_today),
-                  label: const Text('Selecionar')),
+                onPressed: _selecionarData,
+                icon: const Icon(Icons.calendar_today, size: 18),
+                label: const Text('Selecionar'),
+              ),
             ],
           ),
           const SizedBox(height: 12),
+
+          // Botão salvar
           ElevatedButton.icon(
-              onPressed: _salvarEntrada,
-              icon: const Icon(Icons.save),
-              label: const Text('Salvar Entrada')),
+            onPressed: _salvarEntrada,
+            icon: const Icon(Icons.save),
+            label: const Text('Salvar Entrada'),
+          ),
           const SizedBox(height: 16),
+
           const Divider(),
           const SizedBox(height: 8),
+
+          // Título do histórico
           const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Histórico de Entradas',
-                  style: TextStyle(fontWeight: FontWeight.bold))),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Histórico de Entradas',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
           const SizedBox(height: 8),
+
+          // Lista de entradas
           Expanded(
             child: _entradas.isEmpty
                 ? const Center(child: Text('Nenhuma entrada registrada'))
@@ -141,9 +189,18 @@ class _EntradasPageState extends State<EntradasPage> {
                         margin: const EdgeInsets.symmetric(vertical: 4),
                         child: ListTile(
                           leading: const Icon(Icons.attach_money),
-                          title: Text(
-                              'Dinheiro: R\$ ${(e['dinheiro'] as double).toStringAsFixed(2)}  •  Pix: R\$ ${(e['pix'] as double).toStringAsFixed(2)}'),
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Dinheiro: R\$ ${(e['dinheiro'] as double).toStringAsFixed(2)}'),
+                              Text('Pix: R\$ ${(e['pix'] as double).toStringAsFixed(2)}'),
+                            ],
+                          ),
                           subtitle: Text('Data: ${_fmtDate(e['data'] as DateTime)}'),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.redAccent),
+                            onPressed: () => _removerEntrada(e['id'] as int),
+                          ),
                         ),
                       );
                     },

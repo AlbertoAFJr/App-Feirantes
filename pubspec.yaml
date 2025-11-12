@@ -22,6 +22,8 @@ dependencies:
 
   # Para testar/inspecionar o DB local no desktop
   sqflite_common_ffi: ^2.3.1
+  fl_chart: ^1.1.1
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:

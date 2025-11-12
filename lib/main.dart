@@ -3,23 +3,19 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';
-
 import 'pages/entradas_page.dart';
 import 'pages/fiado_page.dart';
+import 'pages/relatorios_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Inicializa banco FFI para desktop
   if (!kIsWeb &&
       (defaultTargetPlatform == TargetPlatform.windows ||
           defaultTargetPlatform == TargetPlatform.linux ||
           defaultTargetPlatform == TargetPlatform.macOS)) {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
-    print('💻 Usando sqflite_common_ffi para banco local no desktop');
-  } else {
-    print('📱 Usando sqflite padrão (mobile)');
   }
 
   runApp(const ControleFinanceiroApp());
@@ -55,7 +51,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  final List<Widget> _pages = const [EntradasPage(), FiadoPage()];
+  final List<Widget> _pages = const [
+    EntradasPage(),
+    FiadoPage(),
+    RelatoriosPage()
+  ];
 
   void _onItemTapped(int idx) => setState(() => _selectedIndex = idx);
 
@@ -74,6 +74,7 @@ class _HomePageState extends State<HomePage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.attach_money), label: 'Entradas'),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Fiado'),
+          BottomNavigationBarItem(icon: Icon(Icons.pie_chart), label: 'Relatórios'),
         ],
       ),
     );
