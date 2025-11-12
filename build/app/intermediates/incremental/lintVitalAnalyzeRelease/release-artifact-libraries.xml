@@ -4,6 +4,20 @@
       jars="C:\Users\Alberto\Desktop\controle_financeiro\build\app\intermediates\flutter\release\libs.jar"
       resolved="__local_aars__:C:\Users\Alberto\Desktop\controle_financeiro\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
+      name=":@@:flutter_native_splash::release"
+      jars="C:\Users\Alberto\.gradle\caches\8.12\transforms\0acdd541b29a7798032c0c0513183126\transformed\out\jars\classes.jar;C:\Users\Alberto\.gradle\caches\8.12\transforms\0acdd541b29a7798032c0c0513183126\transformed\out\jars\libs\R.jar"
+      resolved="net.jonhanson.flutter_native_splash:flutter_native_splash:1.0"
+      partialResultsDir="C:\Users\Alberto\Desktop\controle_financeiro\build\flutter_native_splash\intermediates\lint_vital_partial_results\release\lintVitalAnalyzeRelease\out"
+      folder="C:\Users\Alberto\.gradle\caches\8.12\transforms\0acdd541b29a7798032c0c0513183126\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name=":@@:path_provider_android::release"
       jars="C:\Users\Alberto\.gradle\caches\8.12\transforms\45dd93c4101337c943847a23cbe59d8f\transformed\out\jars\classes.jar;C:\Users\Alberto\.gradle\caches\8.12\transforms\45dd93c4101337c943847a23cbe59d8f\transformed\out\jars\libs\R.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:1.0-SNAPSHOT"

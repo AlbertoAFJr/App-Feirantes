@@ -19,16 +19,26 @@ dependencies:
   # Banco local
   sqflite: ^2.3.0
   path: ^1.9.1
-
-  # Para testar/inspecionar o DB local no desktop
   sqflite_common_ffi: ^2.3.1
   fl_chart: ^1.1.1
   path_provider: ^2.1.5
+  flutter_native_splash: ^2.4.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+
+# Ícone do aplicativo
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icon/
+
+

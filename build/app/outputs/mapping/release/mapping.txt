@@ -3,8 +3,8 @@
 # min_api: 24
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.2"}
-# pg_map_id: fc55380
-# pg_map_hash: SHA-256 fc553804f952fe1ca6286a028248ddf9639547b3c5e46196213d3dc53c8ec1e3
+# pg_map_id: d92066c
+# pg_map_hash: SHA-256 d92066cb33e2bc70eecea0ade88593277780ab16ca112c62d36c6ffac8c109ab
 _COROUTINE.ArtificialStackFrames -> R8$$REMOVED$$CLASS$$0:
 # {"id":"sourceFile","fileName":"CoroutineDebugging.kt"}
 _COROUTINE.CoroutineDebuggingKt -> R8$$REMOVED$$CLASS$$1:
@@ -21913,8 +21913,14 @@ io.flutter.plugins.GeneratedPluginRegistrant -> io.flutter.plugins.GeneratedPlug
     20:21:void registerWith(io.flutter.embedding.engine.FlutterEngine):24 -> registerWith
       # {"id":"com.android.tools.r8.rewriteFrame","conditions":["throws(Ljava/lang/NullPointerException;)"],"actions":["removeInnerFrames(1)"]}
     22:31:void registerWith(io.flutter.embedding.engine.FlutterEngine):24:24 -> registerWith
-    32:37:void io.flutter.Log.e(java.lang.String,java.lang.String,java.lang.Throwable):89:89 -> registerWith
-    32:37:void registerWith(io.flutter.embedding.engine.FlutterEngine):26 -> registerWith
+    32:36:void io.flutter.Log.e(java.lang.String,java.lang.String,java.lang.Throwable):89:89 -> registerWith
+    32:36:void registerWith(io.flutter.embedding.engine.FlutterEngine):26 -> registerWith
+    37:38:io.flutter.embedding.engine.plugins.PluginRegistry io.flutter.embedding.engine.FlutterEngine.getPlugins():672:672 -> registerWith
+    37:38:void registerWith(io.flutter.embedding.engine.FlutterEngine):29 -> registerWith
+      # {"id":"com.android.tools.r8.rewriteFrame","conditions":["throws(Ljava/lang/NullPointerException;)"],"actions":["removeInnerFrames(1)"]}
+    39:48:void registerWith(io.flutter.embedding.engine.FlutterEngine):29:29 -> registerWith
+    49:54:void io.flutter.Log.e(java.lang.String,java.lang.String,java.lang.Throwable):89:89 -> registerWith
+    49:54:void registerWith(io.flutter.embedding.engine.FlutterEngine):31 -> registerWith
 io.flutter.plugins.pathprovider.Messages$PathProviderApi -> R8$$REMOVED$$CLASS$$47:
 # {"id":"sourceFile","fileName":"Messages.java"}
 io.flutter.plugins.pathprovider.Messages$PathProviderApi$$ExternalSyntheticLambda0 -> T.a:
@@ -33054,3 +33060,26 @@ kotlinx.coroutines.scheduling.WorkQueue -> r0.l:
     33:38:kotlinx.coroutines.scheduling.Task tryExtractFromTheMiddle(int,boolean):186:186 -> b
     39:45:boolean java.util.concurrent.atomic.AtomicReferenceArray.compareAndSet(int,java.lang.Object,java.lang.Object):0:0 -> b
     39:45:kotlinx.coroutines.scheduling.Task tryExtractFromTheMiddle(int,boolean):185 -> b
+net.jonhanson.flutter_native_splash.FlutterNativeSplashPlugin -> s0.a:
+# {"id":"sourceFile","fileName":"FlutterNativeSplashPlugin.java"}
+    io.flutter.plugin.common.MethodChannel channel -> b
+      # {"id":"com.android.tools.r8.residualsignature","signature":"LB/e;"}
+    1:4:void <init>():12:12 -> <init>
+    1:2:void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):21:21 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(LB/a;)V"}
+    3:6:io.flutter.plugin.common.BinaryMessenger io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding.getBinaryMessenger():148:148 -> a
+    3:6:void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):21 -> a
+      # {"id":"com.android.tools.r8.rewriteFrame","conditions":["throws(Ljava/lang/NullPointerException;)"],"actions":["removeInnerFrames(1)"]}
+    7:9:void io.flutter.plugin.common.MethodChannel.<init>(io.flutter.plugin.common.BinaryMessenger,java.lang.String):45:45 -> a
+    7:9:void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):21 -> a
+    10:14:void io.flutter.plugin.common.MethodChannel.<init>(io.flutter.plugin.common.BinaryMessenger,java.lang.String,io.flutter.plugin.common.MethodCodec):58:58 -> a
+    10:14:void io.flutter.plugin.common.MethodChannel.<init>(io.flutter.plugin.common.BinaryMessenger,java.lang.String):45 -> a
+    10:14:void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):21 -> a
+    15:16:void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):21:21 -> a
+    17:20:void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):22:22 -> a
+    1:7:void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding):36:36 -> b
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(LB/a;)V"}
+    1:12:void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result):27:27 -> g
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(LB/a;LN/j;)V"}
+    13:32:void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result):28:28 -> g
+    33:36:void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result):30:30 -> g

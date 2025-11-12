@@ -709,6 +709,7 @@ readOnly
 execute
 kotlin.Array
 transactionId
+flutter_native_splash
 accept
 input_method
 oldText
@@ -1012,6 +1013,7 @@ Marking id:view_tree_saved_state_registry_owner:2131165274 used because it match
 Marking id:view_tree_view_model_store_owner:2131165275 used because it matches string pool constant view
 Marking color:androidx_core_ripple_material_light:2130968576 used because it matches string pool constant android
 Marking color:androidx_core_secondary_text_default_material_light:2130968577 used because it matches string pool constant android
+Marking drawable:android12splash:2131099648 used because it matches string pool constant android
 Marking id:androidx_window_activity_scope:2131165226 used because it matches string pool constant android
 Marking string:androidx_startup:2131427328 used because it matches string pool constant android
 Marking attr:shortcutMatchRequired:2130903067 used because it matches string pool constant short
@@ -1104,6 +1106,8 @@ Marking attr:queryPatterns:2130903064 used because it matches string pool consta
 @com.example.controle_financeiro:dimen/notification_subtext_size : reachable=false
 @com.example.controle_financeiro:dimen/notification_top_pad : reachable=false
 @com.example.controle_financeiro:dimen/notification_top_pad_large_text : reachable=false
+@com.example.controle_financeiro:drawable/android12splash : reachable=true
+@com.example.controle_financeiro:drawable/background : reachable=false
 @com.example.controle_financeiro:drawable/ic_call_answer : reachable=false
 @com.example.controle_financeiro:drawable/ic_call_answer_low : reachable=false
 @com.example.controle_financeiro:drawable/ic_call_answer_video : reachable=false
@@ -1111,6 +1115,8 @@ Marking attr:queryPatterns:2130903064 used because it matches string pool consta
 @com.example.controle_financeiro:drawable/ic_call_decline : reachable=false
 @com.example.controle_financeiro:drawable/ic_call_decline_low : reachable=false
 @com.example.controle_financeiro:drawable/launch_background : reachable=false
+    @com.example.controle_financeiro:drawable/background
+    @com.example.controle_financeiro:drawable/splash
 @com.example.controle_financeiro:drawable/notification_action_background : reachable=false
     @com.example.controle_financeiro:color/androidx_core_ripple_material_light
     @com.example.controle_financeiro:dimen/compat_button_inset_horizontal_material
@@ -1136,6 +1142,7 @@ Marking attr:queryPatterns:2130903064 used because it matches string pool consta
 @com.example.controle_financeiro:drawable/notification_tile_bg : reachable=false
     @com.example.controle_financeiro:drawable/notify_panel_notification_icon_bg
 @com.example.controle_financeiro:drawable/notify_panel_notification_icon_bg : reachable=false
+@com.example.controle_financeiro:drawable/splash : reachable=false
 @com.example.controle_financeiro:id/accessibility_action_clickable_span : reachable=true
 @com.example.controle_financeiro:id/accessibility_custom_action_0 : reachable=true
 @com.example.controle_financeiro:id/accessibility_custom_action_1 : reachable=true
@@ -1270,6 +1277,7 @@ Marking attr:queryPatterns:2130903064 used because it matches string pool consta
 @com.example.controle_financeiro:string/status_bar_notification_info_overflow : reachable=false
 @com.example.controle_financeiro:style/LaunchTheme : reachable=true
     @com.example.controle_financeiro:drawable/launch_background
+    @com.example.controle_financeiro:drawable/android12splash
 @com.example.controle_financeiro:style/NormalTheme : reachable=true
 @com.example.controle_financeiro:style/TextAppearance_Compat_Notification : reachable=false
 @com.example.controle_financeiro:style/TextAppearance_Compat_Notification_Info : reachable=false
@@ -1290,6 +1298,7 @@ The root reachable resources are:
  attr:shortcutMatchRequired:2130903067
  color:androidx_core_ripple_material_light:2130968576
  color:androidx_core_secondary_text_default_material_light:2130968577
+ drawable:android12splash:2131099648
  id:accessibility_action_clickable_span:2131165184
  id:accessibility_custom_action_0:2131165185
  id:accessibility_custom_action_1:2131165186
@@ -1376,25 +1385,25 @@ Unused resources are:
  dimen:notification_subtext_size:2131034131
  dimen:notification_top_pad:2131034132
  dimen:notification_top_pad_large_text:2131034133
- drawable:ic_call_answer:2131099648
- drawable:ic_call_answer_low:2131099649
- drawable:ic_call_answer_video:2131099650
- drawable:ic_call_answer_video_low:2131099651
- drawable:ic_call_decline:2131099652
- drawable:ic_call_decline_low:2131099653
- drawable:notification_action_background:2131099655
- drawable:notification_bg:2131099656
- drawable:notification_bg_low:2131099657
- drawable:notification_bg_low_normal:2131099658
- drawable:notification_bg_low_pressed:2131099659
- drawable:notification_bg_normal:2131099660
- drawable:notification_bg_normal_pressed:2131099661
- drawable:notification_icon_background:2131099662
- drawable:notification_oversize_large_icon_bg:2131099663
- drawable:notification_template_icon_bg:2131099664
- drawable:notification_template_icon_low_bg:2131099665
- drawable:notification_tile_bg:2131099666
- drawable:notify_panel_notification_icon_bg:2131099667
+ drawable:ic_call_answer:2131099650
+ drawable:ic_call_answer_low:2131099651
+ drawable:ic_call_answer_video:2131099652
+ drawable:ic_call_answer_video_low:2131099653
+ drawable:ic_call_decline:2131099654
+ drawable:ic_call_decline_low:2131099655
+ drawable:notification_action_background:2131099657
+ drawable:notification_bg:2131099658
+ drawable:notification_bg_low:2131099659
+ drawable:notification_bg_low_normal:2131099660
+ drawable:notification_bg_low_pressed:2131099661
+ drawable:notification_bg_normal:2131099662
+ drawable:notification_bg_normal_pressed:2131099663
+ drawable:notification_icon_background:2131099664
+ drawable:notification_oversize_large_icon_bg:2131099665
+ drawable:notification_template_icon_bg:2131099666
+ drawable:notification_template_icon_low_bg:2131099667
+ drawable:notification_tile_bg:2131099668
+ drawable:notify_panel_notification_icon_bg:2131099669
  id:adjacent:2131165222
  id:always:2131165223
  id:alwaysAllow:2131165224

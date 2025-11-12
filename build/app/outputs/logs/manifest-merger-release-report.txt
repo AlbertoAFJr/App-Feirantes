@@ -30,6 +30,7 @@ ADDED from C:\Users\Alberto\Desktop\controle_financeiro\android\app\src\main\And
 INJECTED from C:\Users\Alberto\Desktop\controle_financeiro\android\app\src\main\AndroidManifest.xml:1:1-45:12
 INJECTED from C:\Users\Alberto\Desktop\controle_financeiro\android\app\src\main\AndroidManifest.xml:1:1-45:12
 INJECTED from C:\Users\Alberto\Desktop\controle_financeiro\android\app\src\main\AndroidManifest.xml:1:1-45:12
+MERGED from [:flutter_native_splash] C:\Users\Alberto\Desktop\controle_financeiro\build\flutter_native_splash\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] C:\Users\Alberto\Desktop\controle_financeiro\build\path_provider_android\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite_android] C:\Users\Alberto\Desktop\controle_financeiro\build\sqflite_android\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.fragment:fragment:1.7.1] C:\Users\Alberto\.gradle\caches\8.12\transforms\7d4d4ce414a44a3730885ae01f2fb152\transformed\fragment-1.7.1\AndroidManifest.xml:2:1-7:12
@@ -122,6 +123,8 @@ uses-sdk
 INJECTED from C:\Users\Alberto\Desktop\controle_financeiro\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Alberto\Desktop\controle_financeiro\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Alberto\Desktop\controle_financeiro\android\app\src\main\AndroidManifest.xml
+MERGED from [:flutter_native_splash] C:\Users\Alberto\Desktop\controle_financeiro\build\flutter_native_splash\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] C:\Users\Alberto\Desktop\controle_financeiro\build\flutter_native_splash\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\Alberto\Desktop\controle_financeiro\build\path_provider_android\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\Alberto\Desktop\controle_financeiro\build\path_provider_android\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite_android] C:\Users\Alberto\Desktop\controle_financeiro\build\sqflite_android\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml:5:5-44

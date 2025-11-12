@@ -26,5 +26,6 @@ com.example.controle_financeiro.app-packageReleaseResources-24 C:\Users\Alberto\
 com.example.controle_financeiro.app-packageReleaseResources-25 C:\Users\Alberto\Desktop\controle_financeiro\build\app\intermediates\incremental\release\packageReleaseResources\stripped.dir
 com.example.controle_financeiro.app-merged-not-compiled-resources-26 C:\Users\Alberto\Desktop\controle_financeiro\build\app\intermediates\merged-not-compiled-resources\release
 com.example.controle_financeiro.app-release-27 C:\Users\Alberto\Desktop\controle_financeiro\build\app\intermediates\merged_res\release\mergeReleaseResources
-com.example.controle_financeiro.app-release-28 C:\Users\Alberto\Desktop\controle_financeiro\build\path_provider_android\intermediates\packaged_res\release\packageReleaseResources
-com.example.controle_financeiro.app-release-29 C:\Users\Alberto\Desktop\controle_financeiro\build\sqflite_android\intermediates\packaged_res\release\packageReleaseResources
+com.example.controle_financeiro.app-release-28 C:\Users\Alberto\Desktop\controle_financeiro\build\flutter_native_splash\intermediates\packaged_res\release\packageReleaseResources
+com.example.controle_financeiro.app-release-29 C:\Users\Alberto\Desktop\controle_financeiro\build\path_provider_android\intermediates\packaged_res\release\packageReleaseResources
+com.example.controle_financeiro.app-release-30 C:\Users\Alberto\Desktop\controle_financeiro\build\sqflite_android\intermediates\packaged_res\release\packageReleaseResources
